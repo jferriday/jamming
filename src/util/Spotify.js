@@ -82,17 +82,27 @@ const Spotify = {
             userId = jsonResponse.id;
             console.log('User ID: ',userId)
             // working up to here
+
+            //creating a new playlist
             return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`,{
                 method: 'POST',
-                headers: {Authorization: `Bearer ${accessToken}`, "Content-type": 'application/json'},
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-type": 'application/json'
+                },
                 body: JSON.stringify({name: playlistName})
-            }).then(response => {return response.json}
+            }).then(response => {
+                return response.json()}
             ).then(jsonResponse => {
                 const playlistID = jsonResponse.id;
+                console.log(playlistID);
+                console.log(trackURIs)
                 return fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`,{
-                    headers: {Authorization: `Bearer: ${accessToken}`, "Content-type": "application/json"},
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                        "Content-Type": "application/json"},
                     method: 'POST',
-                    body: JSON.stringify({uris: trackURIs})
+                    body: JSON.stringify({"uris": trackURIs})
                 })
             })
         })
