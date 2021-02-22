@@ -3,7 +3,7 @@ import { SearchBar } from "../Components/SearchBar/SearchBar";
 
 let accessToken;
 const clientID = 'c0a8505b6ba34e04b8b9edd6f54e42da'
-const redirectUri = 'http://localhost:3000'
+const redirectUri = 'http://jferriday-jamming.surge.sh'
 
 const Spotify = {
     getAccessToken() {
